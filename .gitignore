@@ -1,0 +1,29 @@
+# Binaries
+*.exe
+*.exe~
+*.dll
+*.so
+*.dylib
+tmp/
+
+# Test binary
+*.test
+
+# Output of the go coverage tool
+*.out
+
+# Go workspace file
+go.work
+
+# Air tmp directory
+tmp/
+
+# Build errors log
+build-errors.log
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+*~

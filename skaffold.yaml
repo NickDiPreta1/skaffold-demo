@@ -1,0 +1,34 @@
+apiVersion: skaffold/v4beta6
+kind: Config
+metadata:
+  name: my-go-app
+
+build:
+  artifacts:
+    - image: my-go-app
+      docker:
+        dockerfile: Dockerfile
+      sync:
+        manual:
+          - src: "**/*.go"
+            dest: /app
+          - src: "go.mod"
+            dest: /app
+          - src: "go.sum"
+            dest: /app
+          - src: ".air.toml"
+            dest: /app
+
+manifests:
+  rawYaml:
+    - k8s/deployment.yaml
+    - k8s/service.yaml
+
+deploy:
+  kubectl: {}
+
+portForward:
+  - resourceType: service
+    resourceName: my-go-app-service
+    port: 80
+    localPort: 8080
