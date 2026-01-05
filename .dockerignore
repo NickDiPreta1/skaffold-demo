@@ -1,0 +1,22 @@
+# Istio installation directory
+istio-*/
+
+# Git
+.git
+.gitignore
+
+# Kubernetes manifests
+k8s/
+
+# Documentation
+*.md
+ISTIO_SETUP.md
+README.md
+
+# Skaffold
+skaffold.yaml
+
+# Temporary and build files
+tmp/
+*.tmp
+.DS_Store

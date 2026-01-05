@@ -23,12 +23,16 @@ manifests:
   rawYaml:
     - k8s/deployment.yaml
     - k8s/service.yaml
+    - k8s/istio-gateway.yaml
+    - k8s/istio-virtualservice.yaml
+    - k8s/istio-destinationrule.yaml
 
 deploy:
   kubectl: {}
 
 portForward:
   - resourceType: service
-    resourceName: my-go-app-service
+    resourceName: istio-ingressgateway
+    namespace: istio-system
     port: 80
     localPort: 8080

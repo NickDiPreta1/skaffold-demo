@@ -27,3 +27,6 @@ build-errors.log
 *.swp
 *.swo
 *~
+
+# Istio
+istio-*/

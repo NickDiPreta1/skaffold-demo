@@ -1,0 +1,26 @@
+apiVersion: networking.istio.io/v1beta1
+kind: VirtualService
+metadata:
+  name: my-go-app-virtualservice
+  labels:
+    app: my-go-app
+spec:
+  hosts:
+    - "*"
+  gateways:
+    - my-go-app-gateway
+  http:
+    - match:
+        - uri:
+            prefix: /
+      route:
+        - destination:
+            host: my-go-app-service
+            port:
+              number: 80
+          weight: 100
+      timeout: 30s
+      retries:
+        attempts: 3
+        perTryTimeout: 10s
+        retryOn: 5xx,reset,connect-failure,refused-stream
